@@ -1,0 +1,1155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PsychLogic – Clinical Psychology Module 2 Part 1 Mock Test</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,600&display=swap');
+
+  :root {
+    --bg: #F7F5FB;
+    --surface: #FFFFFF;
+    --primary: #4A2D8A;
+    --primary-light: #6B4FBF;
+    --accent: #00B894;
+    --accent-glow: #00D4A8;
+    --danger: #E74C6F;
+    --danger-light: #FDE8EE;
+    --text: #1A1432;
+    --text-muted: #6B6585;
+    --border: #E5E0F0;
+    --correct-bg: #E6F9F1;
+    --correct-border: #00B894;
+    --wrong-bg: #FDE8EE;
+    --wrong-border: #E74C6F;
+    --skip-bg: #FFF8E7;
+    --skip-border: #F0B429;
+    --tag-net: #4A2D8A;
+    --tag-cuet: #0984E3;
+    --shadow: 0 2px 16px rgba(74,45,138,0.08);
+    --shadow-lg: 0 8px 40px rgba(74,45,138,0.12);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ─── GATE SCREEN ─── */
+  .gate-screen {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    background: linear-gradient(160deg, #0D0B1A 0%, #1A1035 30%, #2D1B69 60%, #4A2D8A 100%);
+    position: relative;
+    overflow: hidden;
+  }
+  .gate-screen::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(0,184,148,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: orbFloat 12s ease-in-out infinite;
+  }
+  .gate-screen::after {
+    content: '';
+    position: absolute;
+    bottom: -150px; left: -100px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(106,76,185,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: orbFloat 15s ease-in-out infinite reverse;
+  }
+  @keyframes orbFloat {
+    0%, 100% { transform: translate(0,0); }
+    50% { transform: translate(30px, -20px); }
+  }
+
+  .gate-card {
+    background: rgba(255,255,255,0.05);
+    backdrop-filter: blur(24px);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 28px;
+    max-width: 620px;
+    width: 100%;
+    padding: 48px 40px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .brand-mark {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+    letter-spacing: -0.5px;
+  }
+  .brand-mark span { color: var(--accent-glow); }
+
+  .brand-tagline {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 3.5px;
+    color: rgba(255,255,255,0.4);
+    margin-bottom: 32px;
+  }
+
+  .gate-module-label {
+    display: inline-block;
+    background: rgba(0,184,148,0.12);
+    border: 1px solid rgba(0,184,148,0.25);
+    color: var(--accent-glow);
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding: 6px 18px;
+    border-radius: 100px;
+    margin-bottom: 24px;
+  }
+
+  .gate-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 6px;
+    line-height: 1.3;
+  }
+
+  .gate-subtitle {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 30px;
+    line-height: 1.5;
+  }
+
+  .gate-meta-row {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 28px;
+    flex-wrap: wrap;
+  }
+  .gate-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+  }
+  .gate-meta-item svg { opacity: 0.5; }
+
+  .video-warning {
+    background: rgba(231,76,111,0.1);
+    border: 1px solid rgba(231,76,111,0.2);
+    border-radius: 16px;
+    padding: 20px 24px;
+    margin-bottom: 28px;
+    text-align: left;
+  }
+  .video-warning-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: #FF7B9C;
+    margin-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .video-warning-text {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.65;
+  }
+  .video-warning-text strong { color: #FF7B9C; }
+  .video-warning-text .white { color: #fff; }
+
+  .gate-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  .gate-input {
+    width: 100%;
+    padding: 14px 18px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 12px;
+    color: #fff;
+    font-size: 14px;
+    font-family: 'Inter', sans-serif;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .gate-input::placeholder { color: rgba(255,255,255,0.25); }
+  .gate-input:focus { border-color: rgba(0,212,168,0.5); background: rgba(255,255,255,0.09); }
+
+  .gate-input.code-field {
+    text-align: center;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    border: 1.5px solid rgba(255,255,255,0.15);
+  }
+  .gate-input.code-field:focus { border-color: var(--accent-glow); }
+  .gate-input.code-field.error {
+    border-color: var(--danger);
+    animation: shake 0.4s ease;
+  }
+  .gate-input.code-field.valid {
+    border-color: var(--accent-glow);
+    background: rgba(0,184,148,0.08);
+  }
+  @keyframes shake {
+    0%,100% { transform: translateX(0); }
+    20%,60% { transform: translateX(-6px); }
+    40%,80% { transform: translateX(6px); }
+  }
+
+  .code-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 4px;
+    text-align: left;
+  }
+  .code-hint {
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+    margin-top: 2px;
+    text-align: center;
+    min-height: 16px;
+  }
+  .code-hint.error { color: var(--danger); }
+  .code-hint.valid { color: var(--accent-glow); }
+
+  .gate-checkbox-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 24px;
+    text-align: left;
+  }
+  .gate-checkbox-row input[type="checkbox"] {
+    margin-top: 3px;
+    accent-color: var(--accent-glow);
+    width: 16px; height: 16px;
+    flex-shrink: 0;
+  }
+  .gate-checkbox-row label {
+    font-size: 12.5px;
+    color: rgba(255,255,255,0.5);
+    cursor: pointer;
+    line-height: 1.5;
+  }
+
+  .btn-start {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(135deg, var(--accent) 0%, #00D4A8 100%);
+    border: none;
+    border-radius: 14px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.2s;
+    letter-spacing: 0.3px;
+  }
+  .btn-start:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0,184,148,0.3);
+  }
+  .btn-start:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* ─── QUIZ SCREEN ─── */
+  .quiz-screen { display: none; min-height: 100vh; }
+
+  .quiz-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: var(--shadow);
+  }
+  .topbar-brand {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 17px;
+    color: var(--primary);
+  }
+  .topbar-brand span { color: var(--accent); }
+  .topbar-module {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+
+  .topbar-center {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .timer-badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 17px;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--primary);
+    background: #F0ECF8;
+    padding: 6px 14px;
+    border-radius: 10px;
+    transition: all 0.3s;
+  }
+  .timer-badge.warning { color: var(--danger); background: var(--danger-light); }
+  .timer-badge.critical { color: #fff; background: var(--danger); animation: pulse 1s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;} 50%{opacity:0.7;} }
+  .timer-badge svg { width: 17px; height: 17px; }
+
+  .progress-pill {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+  }
+
+  .btn-submit-top {
+    padding: 8px 18px;
+    background: var(--primary);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-submit-top:hover { background: var(--primary-light); }
+
+  .progress-track { height: 3px; background: var(--border); }
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+    transition: width 0.3s ease;
+    width: 0%;
+  }
+
+  .q-navigator {
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 24px;
+    overflow-x: auto;
+    display: flex;
+    gap: 5px;
+    scrollbar-width: none;
+  }
+  .q-navigator::-webkit-scrollbar { display: none; }
+
+  .q-nav-btn {
+    min-width: 34px;
+    height: 34px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: var(--surface);
+    color: var(--text-muted);
+    font-size: 11px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.15s;
+    flex-shrink: 0;
+  }
+  .q-nav-btn.active {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(74,45,138,0.3);
+  }
+  .q-nav-btn.answered {
+    background: #E6F9F1;
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .question-area {
+    max-width: 800px;
+    margin: 24px auto;
+    padding: 0 24px 80px;
+  }
+
+  .question-card {
+    background: var(--surface);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: var(--shadow);
+  }
+
+  .question-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .q-number {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--primary);
+    background: #F0ECF8;
+    padding: 4px 12px;
+    border-radius: 8px;
+  }
+  .q-tag {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 6px;
+    color: #fff;
+  }
+  .q-tag.net { background: var(--tag-net); }
+  .q-tag.cuet { background: var(--tag-cuet); }
+  .q-marks {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-left: auto;
+  }
+
+  .question-text {
+    font-size: 15px;
+    font-weight: 500;
+    line-height: 1.7;
+    color: var(--text);
+    margin-bottom: 24px;
+  }
+
+  .options-list { display: flex; flex-direction: column; gap: 8px; }
+
+  .option-btn {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    padding: 13px 16px;
+    background: var(--bg);
+    border: 2px solid transparent;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: all 0.15s;
+    text-align: left;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+  }
+  .option-btn:hover { border-color: var(--primary-light); background: #F0ECF8; }
+  .option-btn.selected { border-color: var(--primary); background: #EDE7F8; }
+
+  .option-letter {
+    width: 28px; height: 28px;
+    border-radius: 8px;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    transition: all 0.15s;
+  }
+  .option-btn.selected .option-letter {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+  }
+  .option-text {
+    font-size: 13.5px;
+    color: var(--text);
+    line-height: 1.5;
+    padding-top: 3px;
+  }
+
+  .q-nav-arrows {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 24px;
+    gap: 10px;
+  }
+  .btn-nav {
+    padding: 10px 22px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    transition: all 0.15s;
+    border: 1.5px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+  }
+  .btn-nav:hover { border-color: var(--primary); color: var(--primary); }
+  .btn-nav:disabled { opacity: 0.3; cursor: not-allowed; }
+  .btn-nav.primary {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: #fff;
+  }
+  .btn-nav.primary:hover { background: var(--primary-light); }
+  .btn-clear {
+    padding: 10px 18px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    border: 1.5px solid var(--border);
+    background: var(--surface);
+    color: var(--text-muted);
+    transition: all 0.15s;
+  }
+  .btn-clear:hover { border-color: var(--danger); color: var(--danger); }
+
+  /* ─── RESULT SCREEN ─── */
+  .result-screen { display: none; min-height: 100vh; background: var(--bg); }
+
+  .result-hero {
+    background: linear-gradient(160deg, #0D0B1A, #1A1035, #2D1B69, #4A2D8A);
+    padding: 48px 24px;
+    text-align: center;
+    color: #fff;
+  }
+  .result-hero-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 8px;
+  }
+  .result-hero-brand span { color: var(--accent-glow); }
+  .result-hero-module {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 24px;
+  }
+
+  .score-ring-container { display: flex; justify-content: center; margin-bottom: 20px; }
+  .score-ring { width: 160px; height: 160px; position: relative; }
+  .score-ring svg { transform: rotate(-90deg); }
+  .score-ring-bg { fill: none; stroke: rgba(255,255,255,0.08); stroke-width: 10; }
+  .score-ring-fill {
+    fill: none;
+    stroke: var(--accent-glow);
+    stroke-width: 10;
+    stroke-linecap: round;
+    transition: stroke-dashoffset 1.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .score-ring-text {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .score-ring-number { font-size: 36px; font-weight: 800; color: #fff; line-height: 1; }
+  .score-ring-label { font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; }
+
+  .result-stats {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+  .result-stat { text-align: center; }
+  .result-stat-val { font-size: 24px; font-weight: 700; }
+  .result-stat-val.green { color: var(--accent-glow); }
+  .result-stat-val.red { color: #FF7B9C; }
+  .result-stat-val.yellow { color: #F9CA24; }
+  .result-stat-lbl { font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1.5px; }
+
+  .result-marking-info {
+    margin-top: 20px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+  }
+
+  .explanations-section {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 32px 24px 60px;
+  }
+  .explanations-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 24px;
+  }
+
+  .filter-row {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    flex-wrap: wrap;
+  }
+  .filter-btn {
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 600;
+    border: 1.5px solid var(--border);
+    background: var(--surface);
+    color: var(--text-muted);
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.15s;
+  }
+  .filter-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+
+  .explanation-card {
+    background: var(--surface);
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 14px;
+    border-left: 4px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+  .explanation-card.correct { border-left-color: var(--correct-border); }
+  .explanation-card.wrong { border-left-color: var(--wrong-border); }
+  .explanation-card.skipped { border-left-color: var(--skip-border); }
+
+  .exp-header { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+  .exp-status {
+    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+    padding: 3px 10px; border-radius: 6px; color: #fff;
+  }
+  .exp-status.correct { background: var(--correct-border); }
+  .exp-status.wrong { background: var(--wrong-border); }
+  .exp-status.skipped { background: var(--skip-border); color: #866A00; }
+
+  .exp-question { font-size: 13.5px; font-weight: 500; line-height: 1.65; margin-bottom: 12px; }
+  .exp-options { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+  .exp-opt { font-size: 12.5px; padding: 7px 12px; border-radius: 8px; background: var(--bg); color: var(--text-muted); }
+  .exp-opt.is-correct { background: var(--correct-bg); color: #065F3E; font-weight: 600; }
+  .exp-opt.is-wrong { background: var(--wrong-bg); color: #9B1B3D; font-weight: 600; text-decoration: line-through; text-decoration-color: rgba(155,27,61,0.25); }
+
+  .exp-detail {
+    font-size: 12.5px; line-height: 1.7; color: var(--text-muted);
+    padding: 14px 16px; background: #F7F5FB; border-radius: 10px; border: 1px solid var(--border);
+  }
+  .exp-detail strong { color: var(--primary); font-weight: 600; }
+
+  .cta-footer {
+    text-align: center;
+    padding: 40px 24px;
+    background: linear-gradient(160deg, #0D0B1A, #1A1035, #2D1B69);
+    color: #fff;
+  }
+  .cta-footer p { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 14px; line-height: 1.6; }
+  .cta-footer a { color: var(--accent-glow); text-decoration: none; font-weight: 600; }
+
+  .modal-overlay {
+    display: none;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.55);
+    z-index: 1000;
+    align-items: center; justify-content: center;
+    padding: 24px;
+  }
+  .modal-overlay.show { display: flex; }
+  .modal-box {
+    background: var(--surface); border-radius: 20px; padding: 32px;
+    max-width: 400px; width: 100%; text-align: center; box-shadow: var(--shadow-lg);
+  }
+  .modal-box h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+  .modal-box p { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; line-height: 1.6; }
+  .modal-btns { display: flex; gap: 12px; }
+  .modal-btns button {
+    flex: 1; padding: 12px; border-radius: 12px; font-size: 13px; font-weight: 600;
+    font-family: 'Inter', sans-serif; cursor: pointer; border: 1.5px solid var(--border);
+    background: var(--surface); color: var(--text); transition: all 0.15s;
+  }
+  .modal-btns .confirm-yes { background: var(--primary); border-color: var(--primary); color: #fff; }
+
+  @media (max-width: 600px) {
+    .gate-card { padding: 32px 22px; }
+    .question-card { padding: 22px 16px; }
+    .gate-title { font-size: 21px; }
+    .brand-mark { font-size: 26px; }
+    .topbar-brand { font-size: 14px; }
+    .topbar-module { display: none; }
+    .timer-badge { font-size: 14px; padding: 5px 10px; }
+    .progress-pill { display: none; }
+    .result-stats { gap: 18px; }
+    .q-nav-arrows { flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ GATE SCREEN ═══════════ -->
+<div class="gate-screen" id="gateScreen">
+  <div class="gate-card">
+    <div class="brand-mark">Psych<span>Logic</span></div>
+    <div class="brand-tagline">Where Psychology Meets Strategy</div>
+
+    <div class="gate-module-label">Module 2 · Part 1</div>
+
+    <h1 class="gate-title">CUET PG · UGC NET/JRF<br>Mock Test Series</h1>
+    <p class="gate-subtitle">Classification Systems (DSM-5 &amp; ICD-11) · Neurodevelopmental Disorders · Schizophrenia Spectrum</p>
+
+    <div class="gate-meta-row">
+      <div class="gate-meta-item">
+        <svg width="16" height="16" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/></svg>
+        50 Questions
+      </div>
+      <div class="gate-meta-item">
+        <svg width="16" height="16" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        25 Minutes
+      </div>
+      <div class="gate-meta-item">
+        <svg width="16" height="16" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="2" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        +2 / −0.50
+      </div>
+    </div>
+
+    <div class="video-warning">
+      <div class="video-warning-title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#FF7B9C" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        Stop — Have You Watched the Video?
+      </div>
+      <div class="video-warning-text">
+        This test is built <strong>directly on top of</strong> the <span class="white">Module 2 Part 1 — Clinical Psychology</span> lecture on our YouTube channel. Every question — from DSM-5 vs ICD-11 tables to schizophrenia duration differentials — is taken from what was taught in that video. If you skip the video and jump straight here, you're guessing, not testing. <strong>The test code you need is revealed during the video itself.</strong> Watch first. Test second. That's how PsychLogic works.
+      </div>
+    </div>
+
+    <div class="gate-fields">
+      <input type="text" class="gate-input" id="studentName" placeholder="Your full name" autocomplete="name">
+      <input type="email" class="gate-input" id="studentEmail" placeholder="Your email address" autocomplete="email">
+      <div>
+        <div class="code-label">Test Access Code</div>
+        <input type="text" class="gate-input code-field" id="testCode" placeholder="• • • • •" maxlength="5" autocomplete="off">
+        <div class="code-hint" id="codeHint">Enter the code shown in the Module 2 Part 1 video</div>
+      </div>
+    </div>
+
+    <div class="gate-checkbox-row">
+      <input type="checkbox" id="videoConfirm">
+      <label for="videoConfirm">I confirm that I have watched the PsychLogic Module 2 Part 1 — Clinical Psychology video on YouTube and I'm ready to test my understanding.</label>
+    </div>
+
+    <button class="btn-start" id="btnStart" disabled>Begin Mock Test →</button>
+  </div>
+</div>
+
+<!-- ═══════════ QUIZ SCREEN ═══════════ -->
+<div class="quiz-screen" id="quizScreen">
+  <div class="quiz-topbar">
+    <div>
+      <div class="topbar-brand">Psych<span>Logic</span></div>
+      <div class="topbar-module">Module 2 · Part 1</div>
+    </div>
+    <div class="topbar-center">
+      <div class="timer-badge" id="timerBadge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        <span id="timerDisplay">25:00</span>
+      </div>
+      <div class="progress-pill" id="progressPill">0 / 50</div>
+    </div>
+    <button class="btn-submit-top" onclick="confirmSubmit()">Submit</button>
+  </div>
+  <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+  <div class="q-navigator" id="qNavigator"></div>
+  <div class="question-area" id="questionArea"></div>
+</div>
+
+<!-- ═══════════ RESULT SCREEN ═══════════ -->
+<div class="result-screen" id="resultScreen">
+  <div class="result-hero">
+    <div class="result-hero-brand">Psych<span>Logic</span></div>
+    <div class="result-hero-module">Module 2 · Part 1 — Results</div>
+    <div class="score-ring-container">
+      <div class="score-ring">
+        <svg width="160" height="160" viewBox="0 0 160 160">
+          <circle class="score-ring-bg" cx="80" cy="80" r="70"/>
+          <circle class="score-ring-fill" id="scoreRingFill" cx="80" cy="80" r="70" stroke-dasharray="439.82" stroke-dashoffset="439.82"/>
+        </svg>
+        <div class="score-ring-text">
+          <div class="score-ring-number" id="scoreNumber">0</div>
+          <div class="score-ring-label" id="scoreOutOf">/ 100</div>
+        </div>
+      </div>
+    </div>
+    <div class="result-stats">
+      <div class="result-stat"><div class="result-stat-val green" id="statCorrect">0</div><div class="result-stat-lbl">Correct</div></div>
+      <div class="result-stat"><div class="result-stat-val red" id="statWrong">0</div><div class="result-stat-lbl">Wrong</div></div>
+      <div class="result-stat"><div class="result-stat-val yellow" id="statSkipped">0</div><div class="result-stat-lbl">Skipped</div></div>
+    </div>
+    <div class="result-marking-info">Marking: +2 correct · −0.50 incorrect · 0 unanswered · Max: 100</div>
+  </div>
+
+  <div class="explanations-section">
+    <div class="explanations-title">Detailed Explanations</div>
+    <div class="filter-row">
+      <button class="filter-btn active" onclick="filterResults('all',this)">All (50)</button>
+      <button class="filter-btn" onclick="filterResults('correct',this)">Correct</button>
+      <button class="filter-btn" onclick="filterResults('wrong',this)">Incorrect</button>
+      <button class="filter-btn" onclick="filterResults('skipped',this)">Skipped</button>
+    </div>
+    <div id="explanationsContainer"></div>
+  </div>
+
+  <div class="cta-footer">
+    <p>Ready for Module 2 Part 2? Watch the next lecture and collect your access code.</p>
+    <p><a href="https://psychlogic.in" target="_blank">psychlogic.in</a> — Free psychology education, always.</p>
+  </div>
+</div>
+
+<!-- ═══════════ CONFIRM MODAL ═══════════ -->
+<div class="modal-overlay" id="confirmModal">
+  <div class="modal-box">
+    <h3>Submit Test?</h3>
+    <p id="modalText"></p>
+    <div class="modal-btns">
+      <button onclick="closeModal()">Go Back</button>
+      <button class="confirm-yes" onclick="submitTest()">Submit</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ═══════════ QUESTIONS DATA ═══════════
+const questions = [
+  // --- DSM-5 vs ICD-11 ---
+  {id:1,tag:"NET PYQ",q:"DSM-5 is published by which organization?",opts:["World Health Organization (WHO)","American Psychiatric Association (APA)","American Psychological Association","British Psychological Society (BPS)"],ans:1,exp:"<strong>DSM-5 is published by the American Psychiatric Association (APA)</strong>, released in 2013. The WHO publishes the ICD. A common trap: APA abbreviation is shared by both the psychiatric and psychological associations — in the context of diagnostic manuals, it's always the Psychiatric Association."},
+  {id:2,tag:"NET PYQ",q:"ICD-11, the latest edition of the International Classification of Diseases, was released in which year?",opts:["2013","2015","2019","2022"],ans:2,exp:"<strong>ICD-11 was released in 2019</strong> and came into effect on 1 January 2022. DSM-5 was released in 2013. ICD-11 has a dedicated chapter for mental, behavioural, and neurodevelopmental disorders (Chapter 06). India officially follows ICD, not DSM."},
+  {id:3,tag:"CUET PYQ",q:"In India, the official classification system used for diagnosing mental disorders is:",opts:["DSM-5","ICD (published by WHO)","RDoC (Research Domain Criteria)","PDM (Psychodynamic Diagnostic Manual)"],ans:1,exp:"<strong>India officially uses the ICD system</strong> (WHO), not the DSM. All government hospitals, NIMHANS, RCI documentation, and medico-legal reports in India follow ICD coding. DSM is widely used in academic and research settings but is not the official Indian standard."},
+  {id:4,tag:"NET PYQ",q:"Which of the following is a key difference between DSM-5 and ICD-11?",opts:["DSM-5 is free to access; ICD-11 is paid","ICD-11 uses a dimensional approach exclusively; DSM-5 is purely categorical","DSM-5 is published by APA and used primarily in the USA; ICD-11 is published by WHO and used globally","DSM-5 covers all medical conditions; ICD-11 covers only mental disorders"],ans:2,exp:"<strong>DSM-5 (APA) is primarily US-centric; ICD-11 (WHO) is used globally.</strong> ICD covers ALL diseases (not just mental disorders). DSM-5 is paid; ICD-11 is freely accessible online. Both now incorporate dimensional elements — neither is purely categorical or purely dimensional."},
+  {id:5,tag:"NET PYQ",q:"The multi-axial diagnostic system (Axis I through Axis V) was a feature of DSM-IV-TR. In DSM-5, this system was:",opts:["Retained with minor modifications","Expanded to seven axes","Removed entirely in favor of a non-axial approach","Replaced with a two-axis system"],ans:2,exp:"<strong>DSM-5 removed the multi-axial system entirely.</strong> In DSM-IV-TR: Axis I = clinical disorders, Axis II = personality disorders + ID, Axis III = general medical, Axis IV = psychosocial stressors, Axis V = GAF. DSM-5 combines all diagnoses into a single list with separate notations for psychosocial and disability factors."},
+  {id:6,tag:"CUET PYQ",q:"In the DSM-IV-TR multi-axial system, personality disorders and intellectual disability were coded on:",opts:["Axis I","Axis II","Axis III","Axis IV"],ans:1,exp:"<strong>Axis II = Personality Disorders + Intellectual Disability (Mental Retardation).</strong> Axis I had clinical disorders (depression, schizophrenia, anxiety). This separation was controversial — it implied PDs were less treatable. DSM-5 eliminated this hierarchy by removing all axes."},
+  {id:7,tag:"NET PYQ",q:"Which axis in the DSM-IV-TR multi-axial system assessed the Global Assessment of Functioning (GAF)?",opts:["Axis I","Axis III","Axis IV","Axis V"],ans:3,exp:"<strong>Axis V = GAF score (0–100)</strong>, rating overall psychological, social, and occupational functioning. DSM-5 replaced GAF with the WHODAS 2.0 (WHO Disability Assessment Schedule) as a recommended but not mandatory measure. GAF was criticized for mixing symptoms and functioning."},
+  // --- Categorical vs Dimensional ---
+  {id:8,tag:"NET PYQ",q:"The categorical approach to classification in psychopathology assumes that:",opts:["Mental disorders exist on a continuum with normal behavior","Disorders are distinct entities — you either have a disorder or you don't","Symptoms should be rated on severity scales","All disorders share a common underlying dimension"],ans:1,exp:"<strong>Categorical = present or absent, discrete entities</strong> (like pregnancy — you either are or aren't). DSM has traditionally been categorical. The <strong>dimensional approach</strong> sees disorders on a continuum (like blood pressure). DSM-5 moved toward incorporating dimensional elements (e.g., severity specifiers in ASD, personality traits model in Section III)."},
+  // --- Intellectual Disability ---
+  {id:9,tag:"NET PYQ",q:"According to DSM-5, Intellectual Disability is classified under which group of disorders?",opts:["Neurocognitive Disorders","Neurodevelopmental Disorders","Personality Disorders","Disruptive, Impulse-Control, and Conduct Disorders"],ans:1,exp:"<strong>Intellectual Disability falls under Neurodevelopmental Disorders in DSM-5.</strong> This group also includes ASD, ADHD, Specific Learning Disorder, Communication Disorders, and Motor Disorders. Neurocognitive Disorders (delirium, dementia) are a separate category — don't confuse the two."},
+  {id:10,tag:"CUET PYQ",q:"The IQ range for Mild Intellectual Disability is approximately:",opts:["Below 20","20–34","35–49","50–69"],ans:3,exp:"<strong>Mild ID: IQ 50–69</strong> (approximately 85% of all ID cases). Moderate: 35–49. Severe: 20–34. Profound: below 20. DSM-5 note: severity is now determined primarily by adaptive functioning, not IQ alone, but IQ ranges still appear in exam questions."},
+  {id:11,tag:"NET PYQ",q:"The IQ range for Moderate Intellectual Disability is approximately:",opts:["50–69","35–49","20–34","Below 20"],ans:1,exp:"<strong>Moderate ID: IQ 35–49.</strong> These individuals can learn basic self-care, simple communication, and may work in sheltered settings. Remember the sequence: Mild (50–69) → Moderate (35–49) → Severe (20–34) → Profound (<20). Mnemonic: the ranges decrease by roughly 15 points each level."},
+  {id:12,tag:"NET PYQ",q:"An individual with an IQ below 20 and severe limitations in all areas of adaptive functioning would be classified as having:",opts:["Mild Intellectual Disability","Moderate Intellectual Disability","Severe Intellectual Disability","Profound Intellectual Disability"],ans:3,exp:"<strong>Profound ID: IQ below 20.</strong> Individuals require 24/7 support, have very limited communication, and are dependent for all daily living activities. This is the rarest level (~1–2% of ID cases). Severe ID is IQ 20–34."},
+  {id:13,tag:"CUET PYQ",q:"DSM-5 emphasizes that the severity of Intellectual Disability should be determined primarily by:",opts:["IQ score alone","Adaptive functioning across conceptual, social, and practical domains","Neuroimaging findings","Age of onset exclusively"],ans:1,exp:"<strong>DSM-5 shifted severity classification to adaptive functioning</strong> (conceptual, social, practical domains) rather than IQ alone. This was a major change from DSM-IV-TR which relied heavily on IQ cutoffs. However, IQ remains part of the diagnostic criteria (approximately 2 SDs below mean)."},
+  // --- ASD ---
+  {id:14,tag:"NET PYQ",q:"In DSM-5, Autism Spectrum Disorder (ASD) consolidated several previous DSM-IV diagnoses. Which of the following was NOT merged into ASD?",opts:["Autistic Disorder","Asperger's Disorder","Childhood Disintegrative Disorder","ADHD"],ans:3,exp:"<strong>ADHD was NOT merged into ASD.</strong> DSM-5 merged Autistic Disorder, Asperger's Disorder, PDD-NOS, and Childhood Disintegrative Disorder into one umbrella diagnosis: ASD. A major exam point: Asperger's is no longer a separate diagnosis in DSM-5 — it's now ASD Level 1."},
+  {id:15,tag:"NET PYQ",q:"DSM-5 criteria for ASD require persistent deficits in which two core domains?",opts:["Attention and hyperactivity","Social communication/interaction AND restricted, repetitive behaviors","Language and motor skills","Mood regulation and social cognition"],ans:1,exp:"<strong>ASD in DSM-5 = two core domains:</strong> (A) Persistent deficits in social communication and social interaction, and (B) Restricted, repetitive patterns of behavior, interests, or activities. DSM-IV had three domains (the 'triad'). DSM-5 collapsed social and communication into one dyad."},
+  {id:16,tag:"CUET PYQ",q:"In DSM-5, ASD is specified with three support levels. Level 1 corresponds to:",opts:["Requiring very substantial support","Requiring substantial support","Requiring support","No support needed"],ans:2,exp:"<strong>Level 1 = 'Requiring support'</strong> (mildest — formerly Asperger's-like). Level 2 = 'Requiring substantial support.' Level 3 = 'Requiring very substantial support' (most severe). The levels are specified separately for social communication and restricted/repetitive behaviors."},
+  {id:17,tag:"NET PYQ",q:"Asperger's Disorder, as a separate diagnostic category, exists in:",opts:["Both DSM-5 and ICD-11","DSM-5 only","ICD-11 only","Neither DSM-5 nor ICD-11"],ans:3,exp:"<strong>Asperger's is gone from both DSM-5 and ICD-11.</strong> DSM-5 (2013) merged it into ASD. ICD-11 (2019) followed suit with 'Autism Spectrum Disorder' as a single category. ICD-10 still had Asperger syndrome as a separate code (F84.5), but ICD-11 removed it. Exam trap: don't pick 'ICD-11 only.'"},
+  // --- ADHD ---
+  {id:18,tag:"NET PYQ",q:"DSM-5 recognizes three presentations of ADHD. Which of the following is NOT one of them?",opts:["Predominantly Inattentive","Predominantly Hyperactive-Impulsive","Combined","Predominantly Oppositional"],ans:3,exp:"<strong>The three ADHD presentations:</strong> (1) Predominantly Inattentive, (2) Predominantly Hyperactive-Impulsive, (3) Combined. 'Predominantly Oppositional' is a distractor — oppositional symptoms belong to ODD (Oppositional Defiant Disorder), a separate diagnosis."},
+  {id:19,tag:"NET PYQ",q:"DSM-5 changed the age-of-onset criterion for ADHD from before age 7 to before age:",opts:["5","10","12","15"],ans:2,exp:"<strong>DSM-5 raised ADHD onset to before age 12</strong> (from before age 7 in DSM-IV). This change recognized that inattentive-type ADHD often becomes apparent later than hyperactive type. Also, DSM-5 lowered the adult symptom threshold from 6 to 5 symptoms for ages 17+."},
+  {id:20,tag:"CUET PYQ",q:"The Conners Rating Scale is most commonly used to assess symptoms of:",opts:["Autism Spectrum Disorder","Intellectual Disability","Attention-Deficit/Hyperactivity Disorder (ADHD)","Specific Learning Disorder"],ans:2,exp:"<strong>Conners Rating Scale = ADHD assessment tool.</strong> It has parent, teacher, and self-report forms. Conners-3 is the latest version. It measures inattention, hyperactivity/impulsivity, learning problems, executive functioning, aggression, and peer relations. Pair it with ADHD whenever you see it in exams."},
+  // --- Specific Learning Disorder ---
+  {id:21,tag:"NET PYQ",q:"In DSM-5, Specific Learning Disorder with impairment in reading is commonly referred to as:",opts:["Dyscalculia","Dysgraphia","Dyslexia","Dysphasia"],ans:2,exp:"<strong>Dyslexia = SLD with impairment in reading</strong> (word reading accuracy, fluency, comprehension). Dyscalculia = impairment in mathematics. Dysgraphia = impairment in written expression. Dysphasia is a language disorder, not a learning disorder. DSM-5 uses specifiers rather than separate diagnoses."},
+  {id:22,tag:"CUET PYQ",q:"Dyscalculia refers to a specific learning disorder with impairment in:",opts:["Reading comprehension","Written expression","Mathematics (number sense, arithmetic)","Oral language"],ans:2,exp:"<strong>Dyscalculia = SLD in mathematics.</strong> It affects number sense, memorization of arithmetic facts, accurate calculation, and mathematical reasoning. DSM-5 lists it as a specifier under the single diagnosis 'Specific Learning Disorder' — not a separate disorder."},
+  {id:23,tag:"NET PYQ",q:"Dysgraphia refers to a specific learning disorder with impairment in:",opts:["Reading fluency","Mathematics","Written expression (spelling, grammar, clarity of writing)","Spoken language"],ans:2,exp:"<strong>Dysgraphia = SLD in written expression.</strong> It involves difficulties with spelling accuracy, grammar and punctuation accuracy, and clarity/organization of written expression. Remember the triad: Dyslexia (reading), Dyscalculia (math), Dysgraphia (writing)."},
+  // --- Schizophrenia ---
+  {id:24,tag:"NET PYQ",q:"According to DSM-5 Criterion A for Schizophrenia, at least how many of the five characteristic symptoms must be present?",opts:["One","Two (and at least one must be from the first three)","Three","All five"],ans:1,exp:"<strong>DSM-5 Criterion A: At least 2 of 5 symptoms, with at least 1 being from items 1–3.</strong> The five: (1) Delusions, (2) Hallucinations, (3) Disorganized speech, (4) Grossly disorganized/catatonic behavior, (5) Negative symptoms. You can't diagnose schizophrenia with only negative symptoms + disorganized behavior."},
+  {id:25,tag:"NET PYQ",q:"Which of the following is a positive symptom of schizophrenia?",opts:["Alogia (poverty of speech)","Avolition (lack of motivation)","Hallucinations","Flat affect"],ans:2,exp:"<strong>Hallucinations are positive symptoms</strong> — they represent an excess or distortion of normal functioning. Positive symptoms: delusions, hallucinations, disorganized speech, bizarre behavior. Negative symptoms: alogia, avolition, anhedonia, flat affect, social withdrawal. Negative = loss/diminution of function."},
+  {id:26,tag:"CUET PYQ",q:"Alogia, anhedonia, avolition, and flat affect are classified as which type of symptoms in schizophrenia?",opts:["Positive symptoms","Negative symptoms","Cognitive symptoms","Mood symptoms"],ans:1,exp:"<strong>These are all negative symptoms.</strong> Alogia = poverty of speech. Anhedonia = inability to feel pleasure. Avolition = lack of motivation/goal-directed behavior. Flat affect = reduced emotional expression. Negative symptoms are harder to treat and more associated with poor long-term prognosis."},
+  {id:27,tag:"NET PYQ",q:"According to DSM-5, the minimum total duration of schizophrenia symptoms (including prodromal/residual phases) is:",opts:["1 day","1 month","6 months","1 year"],ans:2,exp:"<strong>Schizophrenia requires at least 6 months of disturbance</strong> (Criterion C), including at least 1 month of active-phase symptoms (Criterion A). The remaining time can include prodromal or residual symptoms. This 6-month duration is the key differentiator from schizophreniform disorder."},
+  // --- Duration differentials ---
+  {id:28,tag:"NET PYQ",q:"Brief Psychotic Disorder is characterized by the presence of psychotic symptoms lasting:",opts:["At least 1 day but less than 1 month","1 to 6 months","More than 6 months","At least 2 weeks"],ans:0,exp:"<strong>Brief Psychotic Disorder: ≥1 day but <1 month</strong>, with eventual full return to premorbid functioning. Key duration ladder: Brief Psychotic Disorder (<1 month) → Schizophreniform Disorder (1–6 months) → Schizophrenia (≥6 months). This is one of the most tested duration differentials in NET."},
+  {id:29,tag:"NET PYQ",q:"Schizophreniform Disorder differs from Schizophrenia primarily in:",opts:["The type of symptoms experienced","Duration — symptoms last 1 to 6 months, not meeting the 6-month criterion for schizophrenia","The presence of mood symptoms","Age of onset"],ans:1,exp:"<strong>Schizophreniform Disorder: same symptoms as schizophrenia but duration 1–6 months.</strong> If symptoms persist beyond 6 months → diagnosis changes to Schizophrenia. The symptoms are identical — it's purely a duration-based distinction. Good prognosis specifier can be added."},
+  {id:30,tag:"CUET PYQ",q:"The correct duration sequence for the psychotic disorders from shortest to longest is:",opts:["Schizophrenia → Schizophreniform → Brief Psychotic","Brief Psychotic (<1 month) → Schizophreniform (1–6 months) → Schizophrenia (≥6 months)","Schizophreniform → Brief Psychotic → Schizophrenia","Brief Psychotic → Schizophrenia → Schizophreniform"],ans:1,exp:"<strong>Brief Psychotic (<1 mo) → Schizophreniform (1–6 mo) → Schizophrenia (≥6 mo).</strong> Mnemonic: 'BSS' in order of increasing duration. All three share overlapping symptom profiles — the distinguishing factor is how long symptoms persist. This table is a must-know."},
+  // --- Delusional Disorder ---
+  {id:31,tag:"NET PYQ",q:"In Delusional Disorder, the primary feature is the presence of one or more delusions for at least:",opts:["1 day","1 week","1 month","6 months"],ans:2,exp:"<strong>Delusional Disorder: ≥1 month of non-bizarre delusions.</strong> Functioning is not markedly impaired (unlike schizophrenia). Criterion A for schizophrenia is NOT met (apart from the delusion itself). Behavior is not obviously bizarre. This is a common exam differentiation point."},
+  {id:32,tag:"NET PYQ",q:"Which of the following is NOT a recognized subtype of Delusional Disorder in DSM-5?",opts:["Erotomanic type","Grandiose type","Disorganized type","Persecutory type"],ans:2,exp:"<strong>Disorganized is NOT a delusional disorder subtype</strong> — it was a schizophrenia subtype in DSM-IV (removed in DSM-5). The five delusional disorder subtypes: (1) Erotomanic, (2) Grandiose, (3) Jealous, (4) Persecutory, (5) Somatic. Plus 'Mixed' and 'Unspecified.'"},
+  {id:33,tag:"CUET PYQ",q:"In the Erotomanic type of Delusional Disorder, the central delusion is that:",opts:["Someone is plotting against the individual","The individual has exceptional talent or power","Another person, usually of higher status, is in love with the individual","The individual has a serious medical condition"],ans:2,exp:"<strong>Erotomanic = delusion that someone (usually higher status) is in love with the person.</strong> Also called de Clérambault's syndrome. Grandiose = inflated worth/power. Persecutory = being conspired against (most common type). Jealous = partner is unfaithful. Somatic = bodily function/sensation."},
+  {id:34,tag:"NET PYQ",q:"The Jealous type of Delusional Disorder involves the delusion that:",opts:["One has a serious undiagnosed disease","A famous person is in love with the individual","One's partner is unfaithful, without adequate evidence","One possesses extraordinary abilities"],ans:2,exp:"<strong>Jealous type = delusion that one's spouse/partner is unfaithful</strong> (also called Othello syndrome / morbid jealousy). The person may stalk, check, or confront the partner based on trivial 'evidence.' It's distinct from normal jealousy by the fixed, false, unshakeable quality of the belief."},
+  {id:35,tag:"NET PYQ",q:"The Somatic type of Delusional Disorder involves a delusion that:",opts:["Others are plotting harm","The person has an extraordinary mission","The person has a physical defect, disorder, or infestation","A celebrity is sending secret messages"],ans:2,exp:"<strong>Somatic delusion = conviction of having a physical defect, disease, or parasitic infestation.</strong> Common themes: body emits foul odor, infestation under skin (delusional parasitosis / Ekbom syndrome), organ not functioning. Distinct from somatic symptom disorder (which involves distress about real symptoms, not fixed false beliefs)."},
+  // --- Diathesis-Stress Model ---
+  {id:36,tag:"NET PYQ",q:"The diathesis-stress model proposes that psychopathology (e.g., schizophrenia) results from:",opts:["Stress alone, regardless of predisposition","Genetic factors alone, regardless of environment","An interaction between a pre-existing vulnerability (diathesis) and environmental stressors","Purely psychodynamic conflicts"],ans:2,exp:"<strong>Diathesis-stress = vulnerability × environmental trigger.</strong> Neither diathesis alone nor stress alone is sufficient — it's their interaction. Applied to schizophrenia: genetic predisposition (diathesis) + life stressors (precipitant) → onset. It's not a standalone theory of schizophrenia but explains the 'why now' behind onset."},
+  {id:37,tag:"CUET PYQ",q:"In the context of schizophrenia, the 'diathesis' in the diathesis-stress model typically refers to:",opts:["The environmental trigger that causes the first episode","A pre-existing biological or genetic vulnerability","The negative symptoms of schizophrenia","The cultural context of the disorder"],ans:1,exp:"<strong>Diathesis = pre-existing vulnerability</strong>, usually biological/genetic (e.g., family history, dopamine dysregulation, neurodevelopmental abnormalities). Stress = environmental precipitants (psychosocial stressors, substance use, life events). The model explains why not everyone with genetic risk develops schizophrenia."},
+  // --- More Schizophrenia / DSM-5 ---
+  {id:38,tag:"NET PYQ",q:"DSM-5 removed the subtypes of schizophrenia (paranoid, disorganized, catatonic, undifferentiated, residual). The primary reason was:",opts:["They were too specific and precise","They had low diagnostic stability and limited clinical utility","They were not recognized by ICD","They were added in error in DSM-IV"],ans:1,exp:"<strong>DSM-5 removed schizophrenia subtypes due to low diagnostic stability and limited clinical utility.</strong> Patients frequently shifted between subtypes over time. DSM-5 instead uses dimensional severity ratings for the 8 symptom domains. ICD-11 also moved away from traditional subtypes."},
+  {id:39,tag:"",q:"Which of the following was a subtype of schizophrenia in DSM-IV-TR but is no longer a separate subtype in DSM-5?",opts:["Delusional Disorder","Paranoid Schizophrenia","Brief Psychotic Disorder","Schizoaffective Disorder"],ans:1,exp:"<strong>Paranoid Schizophrenia was a DSM-IV-TR subtype</strong>, removed in DSM-5. Other removed subtypes: Disorganized (Hebephrenic), Catatonic, Undifferentiated, Residual. These are still sometimes tested — know them as historical categories. Delusional Disorder and Schizoaffective Disorder remain separate diagnoses."},
+  {id:40,tag:"",q:"Disorganized speech in schizophrenia (Criterion A, item 3) may manifest as all EXCEPT:",opts:["Derailment (loose associations)","Tangentiality","Word salad (incoherence)","Pressured speech with intact associations"],ans:3,exp:"<strong>Pressured speech with intact associations is a feature of mania, not disorganized speech in schizophrenia.</strong> Disorganized speech includes: derailment (loose associations), tangentiality, incoherence (word salad), and neologisms. The key issue is impaired thought organization, not speech speed."},
+  // --- Communication Disorders ---
+  {id:41,tag:"",q:"Communication Disorders in DSM-5 fall under which broader category?",opts:["Neurocognitive Disorders","Neurodevelopmental Disorders","Somatic Symptom Disorders","Anxiety Disorders"],ans:1,exp:"<strong>Communication Disorders are Neurodevelopmental Disorders</strong> in DSM-5, alongside ID, ASD, ADHD, SLD, and Motor Disorders. They include: Language Disorder, Speech Sound Disorder, Childhood-Onset Fluency Disorder (Stuttering), and Social (Pragmatic) Communication Disorder."},
+  {id:42,tag:"NET PYQ",q:"Social (Pragmatic) Communication Disorder in DSM-5 involves deficits in the social use of language. It differs from ASD primarily because it lacks:",opts:["Language delay","Social communication deficits","Restricted, repetitive behaviors and interests","Cognitive impairment"],ans:2,exp:"<strong>Social (Pragmatic) Communication Disorder has social communication deficits but NO restricted/repetitive behaviors (RRBs).</strong> If RRBs are present → diagnose ASD, not SPCD. SPCD was new in DSM-5 and partially captures individuals who would have been diagnosed with Asperger's or PDD-NOS but lack RRBs."},
+  // --- More DSM-5 vs ICD-11 ---
+  {id:43,tag:"CUET PYQ",q:"Which of the following statements about ICD-11 is correct?",opts:["It is published by the APA","It covers only mental and behavioral disorders","It is freely accessible online","It uses the multi-axial system"],ans:2,exp:"<strong>ICD-11 is freely accessible online</strong> via the WHO website — unlike DSM-5 which requires purchase. ICD-11 is published by WHO (not APA), covers ALL diseases and health conditions (not just mental), and does not use a multi-axial system."},
+  {id:44,tag:"",q:"DSM-5 organizes mental disorders using a structure intended to align with which framework for future research?",opts:["RDoC (Research Domain Criteria)","ICD-10 chapter structure","Freud's structural model","Maslow's hierarchy"],ans:0,exp:"<strong>DSM-5 was reorganized to better align with RDoC and developmental/lifespan considerations.</strong> Disorders appearing early in life (NDDs) come first; disorders manifesting later come later. RDoC (NIMH initiative) is a dimensional, neurobiologically-based research framework — DSM-5 moved in that direction."},
+  // --- More ID / ASD ---
+  {id:45,tag:"",q:"DSM-5 replaced the term 'Mental Retardation' with:",opts:["Cognitive Deficit Disorder","Intellectual Disability (Intellectual Developmental Disorder)","Neurocognitive Disorder","Learning Disability"],ans:1,exp:"<strong>DSM-5 uses 'Intellectual Disability (Intellectual Developmental Disorder)'</strong> instead of 'Mental Retardation.' This change reflects Rosa's Law (2010) in the US and reduces stigma. ICD-11 uses 'Disorders of Intellectual Development.' The core criteria remain: deficits in intellectual functions + adaptive functioning + onset during development."},
+  {id:46,tag:"NET PYQ",q:"The IQ range for Severe Intellectual Disability is approximately:",opts:["50–69","35–49","20–34","Below 20"],ans:2,exp:"<strong>Severe ID: IQ 20–34.</strong> Full table: Mild (50–69, ~85% of cases), Moderate (35–49, ~10%), Severe (20–34, ~3–4%), Profound (<20, ~1–2%). Severe ID individuals need substantial daily supervision and can learn very basic self-care with extensive support."},
+  {id:47,tag:"NET PYQ",q:"In DSM-5, for a diagnosis of ADHD in adults (age 17+), the symptom threshold is:",opts:["3 symptoms in either domain","5 symptoms in either domain","6 symptoms in either domain (same as children)","9 symptoms total"],ans:1,exp:"<strong>Adults (17+) need only 5 symptoms</strong> in either inattention or hyperactivity-impulsivity domain, compared to 6 for children/adolescents. This was a DSM-5 change — DSM-IV required 6 for all ages. The lower threshold reflects that some symptoms naturally decrease with age while impairment persists."},
+  {id:48,tag:"",q:"Which of the following is a DSM-5 specifier for ASD?",opts:["With or without intellectual impairment","Paranoid type","With prominent negative symptoms","Mild, moderate, or severe type"],ans:0,exp:"<strong>DSM-5 ASD specifiers include:</strong> with/without intellectual impairment, with/without language impairment, associated with a known medical/genetic condition, associated with another NDD/mental/behavioral disorder, and with catatonia. Severity levels (1–3) are also specified. These specifiers capture the 'spectrum' nature."},
+  {id:49,tag:"CUET PYQ",q:"The 'triad of impairments' (social interaction, communication, restricted behaviors) was characteristic of autism diagnosis in DSM-IV. In DSM-5, this became:",opts:["A tetrad (four domains)","A dyad — social communication/interaction AND restricted, repetitive behaviors","A single domain of social deficits","Unchanged — still a triad"],ans:1,exp:"<strong>DSM-5 collapsed the triad into a dyad</strong> by merging social interaction and communication into one domain. So DSM-5 ASD = (A) Social communication and interaction deficits + (B) Restricted, repetitive behaviors. This is a high-yield exam distinction: triad (DSM-IV) → dyad (DSM-5)."},
+  {id:50,tag:"NET PYQ",q:"The Persecutory type of Delusional Disorder involves the central belief that:",opts:["One is being loved by a famous person","One has an undetected physical disease","One is being conspired against, cheated, spied on, or poisoned","One has been replaced by an imposter"],ans:2,exp:"<strong>Persecutory = most common type of Delusional Disorder.</strong> The person believes they are being conspired against, followed, poisoned, harassed, or obstructed. It's the most common delusional theme across all psychotic disorders. Capgras delusion (impostor belief) is not a DSM-5 delusional disorder subtype — it's a specific delusion type."}
+];
+
+// ═══════════ STATE ═══════════
+let answers = new Array(50).fill(-1);
+let currentQ = 0;
+let timerInterval = null;
+let timeLeft = 25 * 60;
+let testSubmitted = false;
+const VALID_CODE = "AK663";
+
+// ═══════════ GATE LOGIC ═══════════
+const nameInput = document.getElementById('studentName');
+const emailInput = document.getElementById('studentEmail');
+const codeInput = document.getElementById('testCode');
+const videoCheck = document.getElementById('videoConfirm');
+const btnStart = document.getElementById('btnStart');
+const codeHint = document.getElementById('codeHint');
+
+function checkGate() {
+  const nameOk = nameInput.value.trim().length > 0;
+  const emailOk = emailInput.value.trim().length > 0;
+  const codeVal = codeInput.value.trim().toUpperCase();
+  const codeOk = codeVal === VALID_CODE;
+  const videoOk = videoCheck.checked;
+
+  // Code field visual feedback
+  if (codeVal.length === 0) {
+    codeInput.classList.remove('error','valid');
+    codeHint.textContent = 'Enter the code shown in the Module 2 Part 1 video';
+    codeHint.className = 'code-hint';
+  } else if (codeVal.length === 5 && !codeOk) {
+    codeInput.classList.add('error');
+    codeInput.classList.remove('valid');
+    codeHint.textContent = 'Invalid code — watch the video carefully';
+    codeHint.className = 'code-hint error';
+  } else if (codeOk) {
+    codeInput.classList.remove('error');
+    codeInput.classList.add('valid');
+    codeHint.textContent = '✓ Code accepted';
+    codeHint.className = 'code-hint valid';
+  } else {
+    codeInput.classList.remove('error','valid');
+    codeHint.textContent = 'Enter the code shown in the Module 2 Part 1 video';
+    codeHint.className = 'code-hint';
+  }
+
+  btnStart.disabled = !(nameOk && emailOk && codeOk && videoOk);
+}
+
+nameInput.addEventListener('input', checkGate);
+emailInput.addEventListener('input', checkGate);
+codeInput.addEventListener('input', checkGate);
+videoCheck.addEventListener('change', checkGate);
+
+btnStart.addEventListener('click', () => {
+  document.getElementById('gateScreen').style.display = 'none';
+  document.getElementById('quizScreen').style.display = 'block';
+  buildNavigator();
+  renderQuestion(0);
+  startTimer();
+});
+
+// ═══════════ TIMER ═══════════
+function startTimer() {
+  timerInterval = setInterval(() => {
+    if (timeLeft <= 0) { clearInterval(timerInterval); submitTest(); return; }
+    timeLeft--;
+    const m = Math.floor(timeLeft / 60).toString().padStart(2,'0');
+    const s = (timeLeft % 60).toString().padStart(2,'0');
+    document.getElementById('timerDisplay').textContent = `${m}:${s}`;
+    const badge = document.getElementById('timerBadge');
+    badge.classList.remove('warning','critical');
+    if (timeLeft <= 60) badge.classList.add('critical');
+    else if (timeLeft <= 180) badge.classList.add('warning');
+  }, 1000);
+}
+
+// ═══════════ NAVIGATOR ═══════════
+function buildNavigator() {
+  const nav = document.getElementById('qNavigator');
+  nav.innerHTML = '';
+  for (let i = 0; i < 50; i++) {
+    const btn = document.createElement('button');
+    btn.className = 'q-nav-btn' + (i === 0 ? ' active' : '');
+    btn.textContent = i + 1;
+    btn.onclick = () => renderQuestion(i);
+    nav.appendChild(btn);
+  }
+}
+
+function updateNavigator() {
+  const btns = document.querySelectorAll('.q-nav-btn');
+  btns.forEach((btn, i) => {
+    btn.className = 'q-nav-btn';
+    if (i === currentQ) btn.classList.add('active');
+    if (answers[i] !== -1) btn.classList.add('answered');
+  });
+  btns[currentQ]?.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+}
+
+// ═══════════ RENDER QUESTION ═══════════
+function renderQuestion(idx) {
+  currentQ = idx;
+  const q = questions[idx];
+  const area = document.getElementById('questionArea');
+  let tagHTML = '';
+  if (q.tag === 'NET PYQ') tagHTML = '<span class="q-tag net">NET/JRF PYQ</span>';
+  else if (q.tag === 'CUET PYQ') tagHTML = '<span class="q-tag cuet">CUET PG PYQ</span>';
+  const letters = ['A','B','C','D'];
+
+  area.innerHTML = `
+    <div class="question-card">
+      <div class="question-header">
+        <span class="q-number">Q${idx+1}</span>
+        ${tagHTML}
+        <span class="q-marks">+2 / −0.50</span>
+      </div>
+      <div class="question-text">${q.q}</div>
+      <div class="options-list">
+        ${q.opts.map((o, i) => `
+          <button class="option-btn${answers[idx]===i?' selected':''}" onclick="selectOption(${idx},${i})">
+            <span class="option-letter">${letters[i]}</span>
+            <span class="option-text">${o}</span>
+          </button>
+        `).join('')}
+      </div>
+      <div class="q-nav-arrows">
+        <button class="btn-nav" onclick="renderQuestion(${Math.max(0,idx-1)})" ${idx===0?'disabled':''}>← Prev</button>
+        <button class="btn-clear" onclick="clearAnswer(${idx})">Clear</button>
+        ${idx<49
+          ?`<button class="btn-nav primary" onclick="renderQuestion(${idx+1})">Next →</button>`
+          :`<button class="btn-nav primary" onclick="confirmSubmit()">Submit</button>`}
+      </div>
+    </div>`;
+  updateNavigator();
+  updateProgress();
+}
+
+function selectOption(qIdx, optIdx) { answers[qIdx] = optIdx; renderQuestion(qIdx); }
+function clearAnswer(qIdx) { answers[qIdx] = -1; renderQuestion(qIdx); }
+
+function updateProgress() {
+  const answered = answers.filter(a => a !== -1).length;
+  document.getElementById('progressPill').textContent = `${answered} / 50`;
+  document.getElementById('progressFill').style.width = `${(answered/50)*100}%`;
+}
+
+// ═══════════ SUBMIT ═══════════
+function confirmSubmit() {
+  const answered = answers.filter(a => a !== -1).length;
+  document.getElementById('modalText').textContent =
+    `You have answered ${answered} out of 50 questions. Unanswered questions score 0. Submit now?`;
+  document.getElementById('confirmModal').classList.add('show');
+}
+function closeModal() { document.getElementById('confirmModal').classList.remove('show'); }
+
+function submitTest() {
+  if (testSubmitted) return;
+  testSubmitted = true;
+  clearInterval(timerInterval);
+  closeModal();
+
+  let correct = 0, wrong = 0, skipped = 0;
+  questions.forEach((q, i) => {
+    if (answers[i] === -1) skipped++;
+    else if (answers[i] === q.ans) correct++;
+    else wrong++;
+  });
+
+  const score = (correct * 2) - (wrong * 0.5);
+  const maxScore = 100;
+  const pct = Math.max(0, score) / maxScore;
+
+  document.getElementById('quizScreen').style.display = 'none';
+  const rs = document.getElementById('resultScreen');
+  rs.style.display = 'block';
+  window.scrollTo(0, 0);
+
+  const circumference = 2 * Math.PI * 70;
+  const offset = circumference * (1 - pct);
+  setTimeout(() => { document.getElementById('scoreRingFill').style.strokeDashoffset = offset; }, 100);
+
+  document.getElementById('scoreNumber').textContent = score.toFixed(1);
+  document.getElementById('scoreOutOf').textContent = `/ ${maxScore}`;
+  document.getElementById('statCorrect').textContent = correct;
+  document.getElementById('statWrong').textContent = wrong;
+  document.getElementById('statSkipped').textContent = skipped;
+
+  buildExplanations();
+}
+
+function buildExplanations() {
+  const container = document.getElementById('explanationsContainer');
+  const letters = ['A','B','C','D'];
+  let html = '';
+  questions.forEach((q, i) => {
+    let status, statusLabel;
+    if (answers[i] === -1) { status = 'skipped'; statusLabel = 'Skipped'; }
+    else if (answers[i] === q.ans) { status = 'correct'; statusLabel = 'Correct'; }
+    else { status = 'wrong'; statusLabel = 'Incorrect'; }
+
+    let tagHTML = '';
+    if (q.tag === 'NET PYQ') tagHTML = '<span class="q-tag net">NET/JRF PYQ</span>';
+    else if (q.tag === 'CUET PYQ') tagHTML = '<span class="q-tag cuet">CUET PG PYQ</span>';
+
+    html += `
+      <div class="explanation-card ${status}" data-status="${status}">
+        <div class="exp-header">
+          <span class="q-number">Q${i+1}</span>
+          <span class="exp-status ${status}">${statusLabel}</span>
+          ${tagHTML}
+        </div>
+        <div class="exp-question">${q.q}</div>
+        <div class="exp-options">
+          ${q.opts.map((o, j) => {
+            let cls = '';
+            if (j === q.ans) cls = 'is-correct';
+            else if (j === answers[i] && answers[i] !== q.ans) cls = 'is-wrong';
+            return `<div class="exp-opt ${cls}">${letters[j]}. ${o}</div>`;
+          }).join('')}
+        </div>
+        <div class="exp-detail">${q.exp}</div>
+      </div>`;
+  });
+  container.innerHTML = html;
+}
+
+function filterResults(type, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.explanation-card').forEach(card => {
+    card.style.display = (type === 'all' || card.dataset.status === type) ? 'block' : 'none';
+  });
+}
+</script>
+</body>
+</html>
